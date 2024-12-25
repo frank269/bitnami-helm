@@ -9,7 +9,7 @@ image:
 
 imagePullSecrets: []
 nameOverride: ""
-fullnameOverride: ""
+fullnameOverride: "kafka-ui"
 
 serviceAccount:
   # Specifies whether a service account should be created
@@ -47,7 +47,7 @@ envs:
     KAFKA_CLUSTERS_0_NAME: "local"
     KAFKA_CLUSTERS_0_BOOTSTRAPSERVERS: "kafka-headless:9092"
     KAFKA_CLUSTERS_0_ZOOKEEPER: "kafka-zookeeper-headless:2181"
-    KAFKA_CLUSTERS_0_SCHEMAREGISTRY: "http://schema-headless:8081"
+    KAFKA_CLUSTERS_0_SCHEMAREGISTRY: "http://kafka-schema-headless:8081"
     KAFKA_CLUSTERS_0_PROPERTIES_SECURITY_PROTOCOL: SASL_PLAINTEXT
     KAFKA_CLUSTERS_0_PROPERTIES_SASL_MECHANISM: PLAIN
     KAFKA_CLUSTERS_0_PROPERTIES_SASL_JAAS_CONFIG: org.apache.kafka.common.security.plain.PlainLoginModule required username="user" password="bitnami";
@@ -138,13 +138,12 @@ ingress:
   succeedingPaths: []
 
 resources:
-  {}
-  # limits:
-  #   cpu: 200m
-  #   memory: 512Mi
-  # requests:
-  #   cpu: 200m
-  #   memory: 256Mi
+  limits:
+    cpu: 200m
+    memory: 512Mi
+  requests:
+    cpu: 200m
+    memory: 256Mi
 
 autoscaling:
   enabled: false

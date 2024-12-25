@@ -1,9 +1,9 @@
-# dependencies:
-# - name: kafka
-#   repository: file://../kafka
-#   version: 20.0.6
-# - name: common
-#   repository: file://../common
-#   version: 2.2.3
-# digest: sha256:70e46659ec622ac093816338039b11cbdb1aa7ddec4fec460b13cae1e53b5059
-# generated: "2023-01-16T10:17:46.826343826Z"
+dependencies:
+- name: kafka
+  repository: file://../kafka
+  version: 20.0.6
+- name: common
+  repository: file://../common
+  version: 2.2.3
+digest: sha256:3b0bffd2691f8fa30fba56ae66b29d7030f2139d3d011f2113ff48b3ef3f7f7b
+generated: "2023-04-23T16:29:34.6692668+07:00"

@@ -314,16 +314,12 @@ containerSecurityContext:
 ## @param resources.requests The requested resources for the container
 ##
 resources:
-  ## e.g:
-  ## limits:
-  ##   cpu: 100m
-  ##   memory: 128Mi
-  limits: {}
-  ## e.g:
-  ## requests:
-  ##   cpu: 100m
-  ##   memory: 128Mi
-  requests: {}
+  limits:
+    cpu: "1"
+    memory: 1Gi
+  requests:
+    cpu: 125m
+    memory: 128Mi
 ## Schema Registry pods' liveness and readiness probes. Evaluated as a template.
 ## ref: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#container-probes
 ## @param livenessProbe.enabled Enable livenessProbe
@@ -627,20 +623,19 @@ serviceAccount:
 ##   https://github.com/bitnami/charts/blob/main/bitnami/kafka/values.yaml
 ##
 kafka:
+  fullnameOverride: "kafka"
+  ## External Access to Kafka brokers configuration
+  ##
+  externalAccess:
+    ## @param externalAccess.enabled Enable Kubernetes external cluster access to Kafka brokers
+    ##
+    enabled: true
   ## @param kafka.enabled Enable/disable Kafka chart installation
   ##
-  enabled: false
-  nameOverride: ""
+  enabled: true
   ## @param kafka.replicaCount Number of Kafka brokers
   ##
   replicaCount: 1
-  externalAccess:
-    enabled: true
-    autoDiscovery:
-      enabled: true
-  rbac:
-    create: true
-
   auth:
     ## @param kafka.auth.clientProtocol Authentication protocol for communications with clients. Allowed protocols: plaintext, tls, mtls, sasl and sasl_tls
     ##
@@ -698,7 +693,7 @@ kafka:
         interBrokerUser: admin
         ## @param kafka.auth.sasl.jaas.interBrokerPassword Kafka inter broker communication password for SASL authentication
         ##
-        interBrokerPassword: "admin"
+        interBrokerPassword: ""
         ## @param kafka.auth.sasl.jaas.zookeeperUser Kafka Zookeeper user for SASL authentication
         ##
         zookeeperUser: ""
@@ -719,9 +714,10 @@ kafka:
   ##   https://github.com/bitnami/charts/blob/main/bitnami/zookeeper/values.yaml
   ##
   zookeeper:
+    fullnameOverride: "kafka-zookeeper"
     ## @param kafka.zookeeper.enabled Enable/disable Zookeeper chart installation
     ##
-    enabled: false
+    enabled: true
     ## @param kafka.zookeeper.replicaCount Number of Zookeeper replicas
     ##
     replicaCount: 1
@@ -742,7 +738,7 @@ externalKafka:
   ## @param externalKafka.brokers Array of Kafka brokers to connect to. Format: protocol://broker_hostname:port
   ##
   brokers:
-    - PLAINTEXT://kafka-0.kafka-headless:9092
+    - PLAINTEXT://localhost:9092
   ## Authentication parameters
   ## @param externalKafka.auth.protocol                   Authentication protocol. Allowed protocols: plaintext, tls, sasl and sasl_tls
   ## @param externalKafka.auth.jaas.user                  User for SASL authentication
@@ -758,10 +754,10 @@ externalKafka:
     ## | sasl      | Yes (via SASL)                | No                 |
     ## | sasl_tls  | Yes (via SASL)                | Yes                |
     ##
-    protocol: sasl
+    protocol: plaintext
     ## JAAS configuration for SASL authentication
     ## MANDATORY when protocol is 'sasl' or 'sasl_tls'
     ##
     jaas:
       user: user
-      password: "bitnami"
+      password: ""
