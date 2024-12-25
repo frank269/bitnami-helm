@@ -626,16 +626,70 @@ kafka:
   fullnameOverride: "kafka"
   ## External Access to Kafka brokers configuration
   ##
+  affinity: {}
   externalAccess:
     ## @param externalAccess.enabled Enable Kubernetes external cluster access to Kafka brokers
     ##
     enabled: true
+    autoDiscovery:
+      ## @param externalAccess.autoDiscovery.enabled Enable using an init container to auto-detect external IPs/ports by querying the K8s API
+      ##
+      enabled: true
   ## @param kafka.enabled Enable/disable Kafka chart installation
   ##
   enabled: true
+  volumePermissions:
+    ## @param volumePermissions.enabled Enable init container that changes the owner and group of the persistent volume
+    ##
+    enabled: true
+  persistence:
+    ## @param persistence.enabled Enable Kafka data persistence using PVC, note that ZooKeeper persistence is unaffected
+    ##
+    enabled: true
+    ## @param persistence.existingClaim A manually managed Persistent Volume and Claim
+    ## If defined, PVC must be created manually before volume will be bound
+    ## The value is evaluated as a template
+    ##
+    existingClaim: ""
+    ## @param persistence.storageClass PVC Storage Class for Kafka data volume
+    ## If defined, storageClassName: <storageClass>
+    ## If set to "-", storageClassName: "", which disables dynamic provisioning
+    ## If undefined (the default) or set to null, no storageClassName spec is
+    ## set, choosing the default provisioner.
+    ##
+    storageClass: ""
+    ## @param persistence.accessModes Persistent Volume Access Modes
+    ##
+    accessModes:
+      - ReadWriteOnce
+    ## @param persistence.size PVC Storage Request for Kafka data volume
+    ##
+    size: 20Gi
+    ## @param persistence.annotations Annotations for the PVC
+    ##
+    annotations: {}
+    ## @param persistence.labels Labels for the PVC
+    ##
+    labels: {}
+    ## @param persistence.selector Selector to match an existing Persistent Volume for Kafka data PVC. If set, the PVC can't have a PV dynamically provisioned for it
+    ## selector:
+    ##   matchLabels:
+    ##     app: my-app
+    ##
+    selector: {}
+    ## @param persistence.mountPath Mount path of the Kafka data volume
+    ##
+    mountPath: /bitnami/kafka
   ## @param kafka.replicaCount Number of Kafka brokers
   ##
   replicaCount: 1
+  resources:     
+    limits:
+      cpu: "2"
+      memory: 4Gi
+    requests:
+      cpu: 500m
+      memory: 500Mi
   auth:
     ## @param kafka.auth.clientProtocol Authentication protocol for communications with clients. Allowed protocols: plaintext, tls, mtls, sasl and sasl_tls
     ##
@@ -720,7 +774,23 @@ kafka:
     enabled: true
     ## @param kafka.zookeeper.replicaCount Number of Zookeeper replicas
     ##
+
     replicaCount: 1
+    persistence:
+      enabled: true
+      storageClass: ""
+      accessModes:
+        - ReadWriteOnce
+      size: 8Gi
+    resources:      
+      limits:
+        cpu: "1"
+        memory: 1Gi
+      requests:
+        cpu: 125m
+        memory: 128Mi
+    affinity: {}
+
     ## @param kafka.zookeeper.auth [object] Zookeeper auth settings
     auth:
       client:
