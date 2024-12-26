@@ -236,15 +236,7 @@ nodeAffinityPreset:
 ## @param affinity Affinity for pod assignment
 ## Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
 ##
-affinity: 
-  nodeAffinity:
-    requiredDuringSchedulingIgnoredDuringExecution:
-      nodeSelectorTerms:
-      - matchExpressions:
-        - key: omicx-env
-          operator: In
-          values:
-          - dev
+affinity: {}
 ## @param nodeSelector Node labels for pod assignment
 ## ref: https://kubernetes.io/docs/user-guide/node-selection/
 ##
@@ -634,15 +626,7 @@ kafka:
   fullnameOverride: "kafka"
   ## External Access to Kafka brokers configuration
   ##
-  affinity: 
-    nodeAffinity:
-      requiredDuringSchedulingIgnoredDuringExecution:
-        nodeSelectorTerms:
-        - matchExpressions:
-          - key: omicx-env
-            operator: In
-            values:
-            - dev
+  affinity: {}
   externalAccess:
     ## @param externalAccess.enabled Enable Kubernetes external cluster access to Kafka brokers
     ##
@@ -805,15 +789,7 @@ kafka:
       requests:
         cpu: 125m
         memory: 128Mi
-    affinity: 
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-          - matchExpressions:
-            - key: omicx-env
-              operator: In
-              values:
-              - dev
+    affinity: {}
 
     ## @param kafka.zookeeper.auth [object] Zookeeper auth settings
     auth:
