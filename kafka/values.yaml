@@ -232,7 +232,7 @@ auth:
   ##
   clientProtocol: sasl
   # Note: empty by default for backwards compatibility reasons, find more information at
-  # https://github.com/bitnami/charts/pull/8902/
+  ## https://github.com/bitnami/charts/pull/8902/
   externalClientProtocol: ""
   interBrokerProtocol: sasl
   ## SASL configuration
@@ -412,7 +412,13 @@ args: []
 ##   - name: KAFKA_CFG_BACKGROUND_THREADS
 ##     value: "10"
 ##
-extraEnvVars: []
+extraEnvVars:
+  - name: KAFKA_ENABLE_KRAFT
+    value: "false"
+  - name: KAFKA_CFG_PROCESS_ROLES
+    value: ""
+  - name: KAFKA_CFG_CONTROLLER_QUORUM_VOTERS
+    value: ""
 ## @param extraEnvVarsCM ConfigMap with extra environment variables
 ##
 extraEnvVarsCM: ""
