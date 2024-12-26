@@ -626,7 +626,6 @@ kafka:
   fullnameOverride: "kafka"
   ## External Access to Kafka brokers configuration
   ##
-  affinity: {}
   externalAccess:
     ## @param externalAccess.enabled Enable Kubernetes external cluster access to Kafka brokers
     ##
