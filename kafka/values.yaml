@@ -67,7 +67,7 @@ diagnosticMode:
 ## @param image.debug Specify if debug values should be set
 ##
 image:
-  registry: docker-registry.metechvn.com
+  registry: harbor.omicx.vn
   repository: bitnami/kafka
   tag: 3.3.2-debian-11-r0
   digest: ""
@@ -782,7 +782,7 @@ externalAccess:
     ## @param externalAccess.autoDiscovery.image.pullSecrets Init container auto-discovery image pull secrets
     ##
     image:
-      registry: docker-registry.metechvn.com
+      registry: harbor.omicx.vn
       repository: bitnami/kubectl
       tag: 1.25.6-debian-11-r1
       digest: ""
@@ -1025,7 +1025,7 @@ volumePermissions:
   ## @param volumePermissions.image.pullSecrets Init container volume-permissions image pull secrets
   ##
   image:
-    registry: docker-registry.metechvn.com
+    registry: harbor.omicx.vn
     repository: bitnami/bitnami-shell
     tag: 11-debian-11-r75
     digest: ""
@@ -1109,7 +1109,7 @@ metrics:
     ## @param metrics.kafka.image.pullSecrets Specify docker-registry secret names as an array
     ##
     image:
-      registry: docker-registry.metechvn.com
+      registry: harbor.omicx.vn
       repository: bitnami/kafka-exporter
       tag: 1.6.0-debian-11-r52
       digest: ""
@@ -1352,7 +1352,7 @@ metrics:
     ## @param metrics.jmx.image.pullSecrets Specify docker-registry secret names as an array
     ##
     image:
-      registry: docker-registry.metechvn.com
+      registry: harbor.omicx.vn
       repository: bitnami/jmx-exporter
       tag: 0.17.2-debian-11-r41
       digest: ""

@@ -1,8 +1,8 @@
 replicaCount: 1
 
 image:
-  registry: docker-registry.metechvn.com
-  repository: provectuslabs/kafka-ui
+  registry: harbor.omicx.vn
+  repository: bitnami/kafka-ui
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: "latest"
