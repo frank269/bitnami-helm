@@ -74,8 +74,8 @@ diagnosticMode:
 ## @param image.debug Specify if debug values should be set
 ##
 image:
-  registry: docker-registry.metechvn.com
-  repository: bitnami/zookeeper
+  registry: docker.io
+  repository: bitnamilegacy/zookeeper
   tag: 3.8.1-debian-11-r0
   digest: ""
   ## Specify a imagePullPolicy
@@ -672,8 +672,8 @@ volumePermissions:
   ## @param volumePermissions.image.pullSecrets Init container volume-permissions image pull secrets
   ##
   image:
-    registry: docker-registry.metechvn.com
-    repository: bitnami/bitnami-shell
+    registry: docker.io
+    repository: bitnamilegacy/bitnami-shell
     tag: 11-debian-11-r77
     digest: ""
     pullPolicy: IfNotPresent

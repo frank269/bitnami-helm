@@ -67,8 +67,8 @@ diagnosticMode:
 ## @param image.debug Specify if debug values should be set
 ##
 image:
-  registry: docker-registry.metechvn.com
-  repository: bitnami/kafka
+  registry: docker.io
+  repository: bitnamilegacy/kafka
   tag: 3.3.2-debian-11-r0
   digest: ""
   ## Specify a imagePullPolicy
@@ -782,8 +782,8 @@ externalAccess:
     ## @param externalAccess.autoDiscovery.image.pullSecrets Init container auto-discovery image pull secrets
     ##
     image:
-      registry: docker-registry.metechvn.com
-      repository: bitnami/kubectl
+      registry: docker.io
+      repository: bitnamilegacy/kubectl
       tag: 1.25.6-debian-11-r1
       digest: ""
       ## Specify a imagePullPolicy
@@ -1025,8 +1025,8 @@ volumePermissions:
   ## @param volumePermissions.image.pullSecrets Init container volume-permissions image pull secrets
   ##
   image:
-    registry: docker-registry.metechvn.com
-    repository: bitnami/bitnami-shell
+    registry: docker.io
+    repository: bitnamilegacy/bitnami-shell
     tag: 11-debian-11-r75
     digest: ""
     pullPolicy: IfNotPresent
@@ -1109,8 +1109,8 @@ metrics:
     ## @param metrics.kafka.image.pullSecrets Specify docker-registry secret names as an array
     ##
     image:
-      registry: docker-registry.metechvn.com
-      repository: bitnami/kafka-exporter
+      registry: docker.io
+      repository: bitnamilegacy/kafka-exporter
       tag: 1.6.0-debian-11-r52
       digest: ""
       ## Specify a imagePullPolicy
@@ -1352,8 +1352,8 @@ metrics:
     ## @param metrics.jmx.image.pullSecrets Specify docker-registry secret names as an array
     ##
     image:
-      registry: docker-registry.metechvn.com
-      repository: bitnami/jmx-exporter
+      registry: docker.io
+      repository: bitnamilegacy/jmx-exporter
       tag: 0.17.2-debian-11-r41
       digest: ""
       ## Specify a imagePullPolicy
